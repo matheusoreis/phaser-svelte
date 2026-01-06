@@ -1,7 +1,16 @@
 <script lang="ts">
-  import svelteLogo from '/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import type { Scene } from 'phaser';
+  import Counter from './lib/counter.svelte';
+  import Phaser, { type PhaserReference } from './lib/phaser.svelte';
+  import svelteLogo from '/svelte.svg';
+  import viteLogo from '/vite.svg';
+
+  var phaserReference: PhaserReference = {
+    game: null,
+    scene: null
+  };
+
+  const currentScene = (scene: Scene) => {}
 </script>
 
 <main>
@@ -16,6 +25,7 @@
   <h1>Vite + Svelte</h1>
 
   <div class="card">
+    <Phaser bind:phaserReference={phaserReference} currentActiveScene={currentScene}/>
     <Counter />
   </div>
 
